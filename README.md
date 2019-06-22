@@ -21,3 +21,6 @@ A javascript library for interacting with local or remote blockchain node. in th
 A simple Byfn network allows you to create Hyperledger Fabric network Running with 2 Organizations each ORG with two peers.
 
 ## Work Flow
+ 
+
+## Steps
