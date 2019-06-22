@@ -2,7 +2,7 @@
 
 Deploying Ethereum Smartcontracts on Hyperledger Fabric
 
-##Components
+## Components
 
 1.Hyperledger Fabric EVM
 
@@ -16,7 +16,7 @@ EVM Compatiable Blockchain(Hyperledger) node provider
 
 A javascript library for interacting with local or remote blockchain node. in this project scenario, it will interacts Fab3.
 
-4. A BYFN Fabric Network
+4.A BYFN Fabric Network
 
 A simple Byfn network allows you to create Hyperledger Fabric network Running with 2 Organizations each ORG with two peers.
 
