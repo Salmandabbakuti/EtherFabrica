@@ -94,12 +94,18 @@ cd $GOPATH/src/github.com/hyperledger/fabric-samples/first-network
 ```
 Update docker-compose-cli.yaml with the volumes to include the EVM. like below using any code editor
 
-cli:
-    volumes:
-      - ./../../fabric-chaincode-evm:/opt/gopath/src/github.com/hyperledger/fabric-chaincode-evm
+
+  ``` 
+     cli:
+       volumes:
+       - ./../../fabric-chaincode-evm:/opt/gopath/src/github.com/hyperledger/fabric-chaincode-evm
+    
+   ```
+      
+ 
      
      
-### 3. Star Your fabric-Network
+### 3. Start Your fabric-Network
 
 Generate certifacates and start your network 
 
