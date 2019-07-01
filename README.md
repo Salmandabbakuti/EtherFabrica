@@ -55,7 +55,7 @@ sudo apt-get install npm
 ```
 ## Steps
 
-1. Build Your Fabric Network
+### 1. Build Your Fabric Network
 a) Clone fabric-samples to ```$GOPATH/src/github.com/hyperledger/``` for this, we need to create directories first and clone
 
 ```
@@ -74,7 +74,7 @@ b) download docker images for fabric-samples first network
 ```
 ./scripts/bootstrap.sh
 ```
-2. Mounting EVM on Fabric-peers.
+### 2. Mounting EVM on Fabric-peers.
 
 Clone the ```fabric-chaincode-evm repo``` in your GOPATH directory.
 
@@ -92,13 +92,14 @@ We need to include fabric-chaincode-evm to our first network docker images. Navi
 cd $GOPATH/src/github.com/hyperledger/fabric-samples/first-network
 
 ```
-Update the docker-compose-cli.yaml with the volumes to include the EVM. like below using any code editor
+Update docker-compose-cli.yaml with the volumes to include the EVM. like below using any code editor
 
 cli:
     volumes:
       - ./../../fabric-chaincode-evm:/opt/gopath/src/github.com/hyperledger/fabric-chaincode-evm
      
-3. Star Your fabric-Network
+     
+### 3. Star Your fabric-Network
 
 Generate certifacates and start your network 
 
@@ -108,7 +109,7 @@ Generate certifacates and start your network
 ```
 Now your fabric network with Evm is up and running. 
 
-4. Install and Instantiate EVM Chaincode
+### 4. Install and Instantiate EVM Chaincode
 
 Now we need to Install and instantiate chaincode on evm. navigate to cli of docker container
 ```
@@ -131,7 +132,7 @@ peer chaincode instantiate -n evmcc -v 0 -C mychannel -c '{"Args":[]}' -o ordere
 
 exit
 ```
-5. Setup Fab3
+### 5. Setup Fab3
 Execute the following to set certain environment variables required for setting up Fab3.
 
 ```
@@ -147,11 +148,41 @@ Now Navigate back to ```fabric-chaincode-evm``` to build and run proxy
 ```
 cd $GOPATH/src/github.com/hyperledger/fabric-chaincode-evm/
 go build -o fab3 ./fabproxy/cmd #builds the proxy with predefined env variables
-./fab3  #starts proxy on your host
+./fab3   #starts proxy on your host
 ```
 Now your Fabric network is ready for deploying Smartcotracts
 
+### 6. Deploying Smartcontracts
 
+install web3 library
+
+```
+npm install web3@0.20.2
+```
+Create Work directory of your choice and run ```npm install ``` in that directory.
+
+Now we'll enter node console to set up our web3.
+```
+node
+```
+
+Assign Web3 library and use the fab3 running in the previous terminal as provider
+
+```
+Web3 = require('web3')
+web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:5000'))
+```
+
+To see your account information
+
+```
+web3.eth.accounts
+```
+Assign this account as defaultAccount
+
+```web3.eth.defaultAccount = web3.eth.accounts[0]```
+
+Now You can deploy your smartcontract by pointing Abi and bytecode in similar way as you do with ethereum.
 
 
 
